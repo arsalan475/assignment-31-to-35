@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>K-Electric Bill Generator</title>
+  </head>
+  <body>
+    <h1>K-Electric Bill Generator</h1>
+
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" /><br /><br />
+
+    <label for="currentMonth">Current Month:</label>
+    <input type="text" id="currentMonth" /><br /><br />
+
+    <label for="numOfUnits">Number of Units:</label>
+    <input type="number" id="numOfUnits" /><br /><br />
+
+    <label for="chargePerUnit">Charges per Unit:</label>
+    <input type="number" id="chargePerUnit" /><br /><br />
+
+    <button onclick="calculateBill()">Calculate Bill</button><br /><br />
+
+    <h2>Bill Details:</h2>
+    <p id="netAmountPayable"></p>
+    <p id="latePaymentSurcharge"></p>
+    <p id="grossAmountPayable"></p>
+
+    <script>
+      function calculateBill() {
+        const customerName = document.getElementById("customerName").value;
+        const currentMonth = document.getElementById("currentMonth").value;
+        const numOfUnits = parseFloat(
+          document.getElementById("numOfUnits").value
+        );
+        const chargePerUnit = parseFloat(
+          document.getElementById("chargePerUnit").value
+        );
+
+        const netAmountPayable = numOfUnits * chargePerUnit;
+        const latePaymentSurcharge = netAmountPayable * 0.1; // Assuming a late payment surcharge of 10%.
+        const grossAmountPayable = netAmountPayable + latePaymentSurcharge;
+
+        document.getElementById(
+          "netAmountPayable"
+        ).innerText = `Net Amount Payable (within Due Date): Rs${netAmountPayable.toFixed(
+          2
+        )}`;
+        document.getElementById(
+          "latePaymentSurcharge"
+        ).innerText = `Late Payment Surcharge: Rs${latePaymentSurcharge.toFixed(
+          2
+        )}`;
+        document.getElementById(
+          "grossAmountPayable"
+        ).innerText = `Gross Amount Payable (after Due Date): Rs${grossAmountPayable.toFixed(
+          2
+        )}`;
+      }
+    </script>
+  </body>
+</html>

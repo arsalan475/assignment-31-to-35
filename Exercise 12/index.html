@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const currentDate = new Date();
+
+      const yearsToSubtract = 100;
+      const newDate = new Date(currentDate);
+      newDate.setFullYear(currentDate.getFullYear() - yearsToSubtract);
+
+      const formattedDate = newDate.toDateString();
+
+      alert(`Date 100 years ago was: ${formattedDate}`);
+    </script>
+  </body>
+</html>
